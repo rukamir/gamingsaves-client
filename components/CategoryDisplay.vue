@@ -5,11 +5,11 @@
         <span>{{ category }}</span>
       </div>
       <div v-for="i in list" :key="i.genre" class="text item">
-        <a :href="'/game/' + i.id">
+        <nuxt-link :to="`/game/${i.id}`">
           <div>{{ i.title }}</div>
           <div>{{ i.platform }}</div>
           <div>{{ i.score }}</div>
-        </a>
+        </nuxt-link>
       </div>
     </el-card>
   </div>
