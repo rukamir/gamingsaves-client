@@ -1,35 +1,57 @@
 <template>
   <div class="container">
-    <div>
-      <logo />
-      <h1 class="title">
-        deals-clientv2
-      </h1>
-      <h2 class="subtitle">
-        My priceless Nuxt.js project
-      </h2>
-      <div class="links">
-        <a href="https://nuxtjs.org/" target="_blank" class="button--green">
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
+    <el-main>
+      <el-row>
+        <el-col
+          v-for="cat in topplatform"
+          :key="cat.genre"
+          :sm="8"
+          :md="8"
+          :lg="4"
         >
-          GitHub
-        </a>
-      </div>
-    </div>
+          <CategoryDisplay :category="cat.genre" :list="cat.games" />
+        </el-col>
+      </el-row>
+
+      <el-row>
+        <el-col
+          v-for="cat in topgenre"
+          :key="cat.genre"
+          :sm="8"
+          :md="8"
+          :lg="4"
+        >
+          <CategoryDisplay :category="cat.genre" :list="cat.games" />
+        </el-col>
+      </el-row>
+    </el-main>
   </div>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
+import CategoryDisplay from '~/components/CategoryDisplay.vue'
 
 export default {
   components: {
-    Logo
+    CategoryDisplay
+  },
+  asyncData: async ({ $axios }) => {
+    let platformLists = null
+    let genreLists = null
+    try {
+      platformLists = await $axios.$get(
+        'http://localhost:2000/top/platform/all'
+      )
+      genreLists = await $axios.$get('http://localhost:2000/top/genre/all')
+    } catch (err) {
+      console.log('Error:', err.message)
+    }
+
+    return {
+      topgenre: genreLists,
+      topplatform: platformLists,
+      name: 'Jimmy'
+    }
   }
 }
 </script>
