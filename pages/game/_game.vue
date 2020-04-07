@@ -1,10 +1,18 @@
 <template>
-  <div>{{ gameProfile.title }}</div>
+  <div>
+    <div>{{ gameProfile.title }}</div>
+    <el-row>
+      <PriceChart :data="gameProfile.history" />
+    </el-row>
+  </div>
 </template>
 
 <script>
+import PriceChart from '~/components/PriceChart'
+
 export default {
   name: 'GameProfilePage',
+  components: { PriceChart },
   asyncData: async ({ $axios, params }) => {
     let gameProfile = null
     console.log({ params })
