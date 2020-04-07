@@ -87,60 +87,21 @@ export default {
           )
         }
       }
-
-      // if (datesAreOnSameDay(new Date(e.date), priceDate)) {
-      //   td.push({
-      //     date: new Date(priceDate),
-      //     list: e.list
-      //   })
-      // }
-      // while (
-      //   !datesAreOnSameDay(new Date(e.date), priceDate) &&
-      //   // eslint-disable-next-line no-unmodified-loop-condition
-      //   maxHistDate < priceDate &&
-      //   td.length < 10
-      // ) {
-      //   console.log({ priceDate, length: td.length })
-      //   priceDate.setDate(priceDate.getDate() - 1)
-      //   td.push({
-      //     date: new Date(priceDate),
-      //     list: e.list
-      //   })
-      // }
     })
 
-    //  console.log({ start: td[td.length - 1].date, end: lastYear })
-    // console.log({
-    //   oldprices: this.fillPriceDateArray(
-    //     td[td.length - 1].date,
-    //     lastYear,
-    //     99.99
-    //   )
-    // })
-    // td = td.concat(
-    //   this.fillPriceDateArray(td[td.length - 1].date, this.maxHistDate, 20)
-    // )
     this.chartData = this.chartData.concat(td.map((i) => [i.date, i.list]))
-
-    // this.chartData.push([new Date('2020-01-05'), 4])
-    // this.chartData.push([new Date('2020-01-04'), 5])
-    // this.chartData.push([new Date('2020-01-03'), 5])
-    // this.chartData.push([new Date('2020-01-02'), 5])
-    // this.chartData.push([new Date('2020-01-01'), 5])
   },
   methods: {
     fillPriceDateArray: (datestart, datelimit, price) => {
       const lastDate = new Date(datelimit)
       const priceDate = new Date(datestart)
       const dateList = []
-      console.log({ start: new Date(datestart), lastDate, priceDate })
       while (
         // !datesAreOnSameDay(new Date(datestart), priceDate) &&
         // eslint-disable-next-line no-unmodified-loop-condition
         lastDate < priceDate &&
         dateList.length < 400
       ) {
-        console.log('loop', { priceDate, length: dateList.length })
         priceDate.setDate(priceDate.getDate() - 1)
         dateList.push({
           date: new Date(priceDate),
