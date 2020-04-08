@@ -2,26 +2,16 @@
   <div class="container">
     <el-main>
       <el-row>
-        <el-col
-          v-for="cat in topplatform"
-          :key="cat.genre"
-          :sm="8"
-          :md="8"
-          :lg="4"
-        >
-          <CategoryDisplay :category="cat.genre" :list="cat.games" />
+        <!-- eslint-disable-next-line prettier/prettier -->
+        <el-col v-for="cat in topplatform" :key="cat.category" :sm="8" :md="8" :lg="4">
+          <CategoryDisplay :category="cat.category" :list="cat.games" />
         </el-col>
       </el-row>
 
       <el-row>
-        <el-col
-          v-for="cat in topgenre"
-          :key="cat.genre"
-          :sm="8"
-          :md="8"
-          :lg="4"
-        >
-          <CategoryDisplay :category="cat.genre" :list="cat.games" />
+        <!-- eslint-disable-next-line prettier/prettier -->
+        <el-col v-for="cat in topgenre" :key="cat.category" :sm="8" :md="8" :lg="4">
+          <CategoryDisplay :category="cat.category" :list="cat.games" />
         </el-col>
       </el-row>
     </el-main>
@@ -42,8 +32,9 @@ export default {
       platformLists = await $axios.$get(
         'http://localhost:2000/top/platform/all'
       )
-      genreLists = await $axios.$get('http://localhost:2000/top/genre/all')
+      genreLists = await $axios.$get('http://localhost:2000/top/genre/multi')
     } catch (err) {
+      // eslint-disable-next-line no-console
       console.log('Error:', err.message)
     }
 

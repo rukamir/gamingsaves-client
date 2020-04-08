@@ -1,11 +1,7 @@
 <template>
   <div>
-    <GChart
-      type="LineChart"
-      :settings="settings"
-      :data="chartData"
-      :options="chartOptions"
-    />
+    <!-- eslint-disable-next-line prettier/prettier -->
+    <GChart type="LineChart" :settings="settings" :data="chartData" :options="chartOptions" />
   </div>
 </template>
 
@@ -18,6 +14,7 @@ const datesAreOnSameDay = (first, second) => {
     first.getDate() === second.getDate()
   )
 }
+// data column format found at https://developers.google.com/chart/interactive/docs/datesandtimes?hl=en#dates-and-times-using-the-date-string-representation
 
 export default {
   name: 'PriceChart',
@@ -57,13 +54,12 @@ export default {
         { id: 'price1', label: 'Price', type: 'number' }
       ]
     ]
-    this.data.push({ date: '2020-01-01T00:00:00Z', list: 1 })
-    this.data.push({ date: '2019-12-15T00:00:00Z', list: 6 })
+    // this.data.push({ date: '2020-01-01T00:00:00Z', list: 1 })
+    // this.data.push({ date: '2019-12-15T00:00:00Z', list: 6 })
 
     let td = []
     const priceDate = new Date()
     this.data.forEach((e) => {
-      console.log({ e })
       // if today is the most recent price start there
       if (datesAreOnSameDay(new Date(e.date), new Date())) {
         td.push({

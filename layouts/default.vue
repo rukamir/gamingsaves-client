@@ -1,5 +1,6 @@
 <template>
   <div>
+    <DealHeader />
     <nuxt />
   </div>
 </template>
@@ -53,3 +54,12 @@ html {
   background-color: #35495e;
 }
 </style>
+
+<script>
+import DealHeader from '~/components/DealHeader'
+
+export default {
+  name: 'Default',
+  components: { DealHeader }
+}
+</script>
