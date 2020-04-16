@@ -1,0 +1,27 @@
+stages:
+  - build
+  - deploy
+
+docker-build:
+  # Official docker image.
+  image: docker:latest
+  stage: build
+  services:
+    - docker:dind
+  script:
+    - docker build -t gamingsaves-fe.docker .
+    - docker save -o gamingsaves-fe.docker gamingsaves-fe.docker
+  artifacts:
+    paths:
+      - gamingsaves-fe.docker
+  only:
+    - master
+
+deploy-prod:
+  image: debian:latest
+  script:
+    - chmod 600 $SSH_KEY
+    - mkdir -p ~/.ssh
+    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+    - ssh -i $SSH_KEY jimmy@$PROD_ADDR rm -f /home/jimmy/gamingsaves-fe.docker
+    - scp -i $SSH_KEY $CI_PROJECT_DIR/gamingsaves-fe.docker  jimmy@$PROD_ADDR:/home/jimmy/gamingsaves-fe.docker

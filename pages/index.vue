@@ -32,7 +32,7 @@ export default {
       platformLists = await $axios.$get(
         'http://localhost:2000/top/platform/all'
       )
-      genreLists = await $axios.$get('http://localhost:2000/top/genre/multi')
+      genreLists = await $axios.$get('http://localhost:2000/top/genre/all')
     } catch (err) {
       // eslint-disable-next-line no-console
       console.log('Error:', err.message)
