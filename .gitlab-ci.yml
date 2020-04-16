@@ -20,6 +20,8 @@ docker-build:
 deploy-prod:
   image: debian:latest
   stage: deploy
+  before_script:
+    - apt-get update && apt-get -qq -y install ssh
   script:
     - chmod 600 $SSH_KEY
     - mkdir -p ~/.ssh
