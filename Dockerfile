@@ -1,10 +1,5 @@
 FROM node:10.16-alpine
 
-ENV NODE_ENV=production
-ENV DB_ADDRESS=144.202.65.233
-ENV DB_USER=retriever
-ENV DB_PASS=password
-ENV DB_NAME=game
 ENV OBJ_STORAGE_ADDR=https://ewr1.vultrobjects.com
 ENV OBJ_STORAGE_PORT=443
 
