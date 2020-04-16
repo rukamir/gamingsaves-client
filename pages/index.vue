@@ -20,6 +20,7 @@
 
 <script>
 import CategoryDisplay from '~/components/CategoryDisplay.vue'
+const API_WS = process.env.API_WS || 'http://localhost:2000'
 
 export default {
   components: {
@@ -29,10 +30,8 @@ export default {
     let platformLists = null
     let genreLists = null
     try {
-      platformLists = await $axios.$get(
-        'http://localhost:2000/top/platform/all'
-      )
-      genreLists = await $axios.$get('http://localhost:2000/top/genre/all')
+      platformLists = await $axios.$get(API_WS + '/top/platform/all')
+      genreLists = await $axios.$get(API_WS + '/top/genre/all')
     } catch (err) {
       // eslint-disable-next-line no-console
       console.log('Error:', err.message)

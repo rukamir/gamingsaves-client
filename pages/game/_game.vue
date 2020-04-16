@@ -43,7 +43,7 @@
         <ProfileDetail label="Developer">{{ gameProfile.dev }}</ProfileDetail>
         <ProfileDetail label="Publisher">{{ gameProfile.pub }}</ProfileDetail>
         <ProfileDetail label="Genre(s)">{{ gameProfile.genres }}</ProfileDetail>
-        <el-button type="primary" @click="visitStorePage" round
+        <el-button type="primary" round @click="visitStorePage"
           >Visit Store Page</el-button
         >
       </el-col>
@@ -62,7 +62,7 @@
           :category="gameProfile.genres[0]"
           :list="genreSuggestions"
         />
-      </el-col> -->
+      </el-col>-->
       <el-col :md="12" :sm="24">
         <CategoryDisplay
           :category="gameProfile.platform.String"
@@ -77,8 +77,8 @@
 import PriceChart from '~/components/PriceChart'
 import CategoryDisplay from '~/components/CategoryDisplay'
 import ProfileDetail from '~/components/ProfileDetail'
-const IMG_ENDPOINT =
-  process.env.VUE_APP_IMG_ENDPOINT || 'http://localhost:80/img'
+const IMG_ENDPOINT = process.env.IMG_ENDPOINT || 'http://localhost:80/img'
+const API_WS = process.env.API_WS || 'http://localhost:2000'
 
 export default {
   name: 'GameProfilePage',
@@ -89,15 +89,12 @@ export default {
     // let genreSuggestions = null
     let platformSuggestions = null
     try {
-      gameProfile = await $axios.$get(
-        'http://localhost:2000/game/' + params.game
-      )
+      gameProfile = await $axios.$get(API_WS + '/game/' + params.game)
       // genreSuggestions = await $axios.$get(
       //   'http://localhost:2000/top/genre/multi?value=' + gameProfile.genres[0]
       // )
       platformSuggestions = await $axios.$get(
-        'http://localhost:2000/top/platform?value=' +
-          gameProfile.platform.String
+        API_WS + '/top/platform?value=' + gameProfile.platform.String
       )
     } catch (err) {
       // genreSuggestions = null

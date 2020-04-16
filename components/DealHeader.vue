@@ -17,6 +17,7 @@
 </template>
 
 <script>
+const API_WS = process.env.API_WS || 'http://localhost:2000'
 export default {
   name: 'DealHeader',
   data() {
@@ -26,7 +27,7 @@ export default {
     async querySearchAsync(queryString, cb) {
       try {
         const results = await this.$axios.$get(
-          'http://localhost:2000/simple-search?value=' + queryString
+          API_WS + '/simple-search?value=' + queryString
         )
         cb(
           results.map((e) => ({
