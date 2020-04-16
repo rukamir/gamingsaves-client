@@ -19,6 +19,7 @@ docker-build:
 
 deploy-prod:
   image: debian:latest
+  stage: deploy
   script:
     - chmod 600 $SSH_KEY
     - mkdir -p ~/.ssh
