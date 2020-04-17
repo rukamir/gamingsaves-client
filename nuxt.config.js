@@ -59,8 +59,11 @@ export default {
      */
     extend(config, ctx) {}
   },
+  router: {
+    prefetchLinks: false
+  },
   env: {
-    IMG_ENDPOINT: process.env.IMG_ENDPOINT || 'http://localhost:80/img',
+    IMG_SRC: process.env.IMG_SRC || 'http://localhost:80/img',
     API_WS: process.env.API_WS || 'http://localhost:2000'
   }
 }
