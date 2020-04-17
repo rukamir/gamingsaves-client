@@ -26,8 +26,8 @@ deploy-prod:
     - mkdir -p ~/.ssh
     - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
     - ssh -i $SSH_KEY jimmy@$PROD_ADDR rm -f /home/jimmy/gamingsaves-fe.docker
-    - ssh -i $SSH_KEY jimmy@$PROD_ADDR docker stop $(docker ps -q --filter ancestor=gamingsaves-fe.docker)
+    - ssh -i $SSH_KEY jimmy@$PROD_ADDR /home/jimmy/scripts/fe-stop.sh
   script:
     - scp -i $SSH_KEY $CI_PROJECT_DIR/gamingsaves-fe.docker  jimmy@$PROD_ADDR:/home/jimmy/gamingsaves-fe.docker
     - ssh -i $SSH_KEY jimmy@$PROD_ADDR docker load -i /home/jimmy/gamingsaves-fe.docker
-    - docker run -d --dns 8.8.8.8 --net=host --env-file ./.prod.env gamingsaves-fe.docker
+    - ssh -i $SSH_KEY jimmy@$PROD_ADDR /home/jimmy/scripts/fe-start.sh
