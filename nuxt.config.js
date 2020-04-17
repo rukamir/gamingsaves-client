@@ -60,8 +60,7 @@ export default {
     extend(config, ctx) {}
   },
   env: {
-    IMG_ENDPOINT:
-      process.env.NUXT_ENV_IMG_ENDPOINT || 'http://localhost:80/img',
-    API_WS: process.env.NUXT_ENV_API_WS || 'http://localhost:2000'
+    IMG_ENDPOINT: process.env.IMG_ENDPOINT || 'http://localhost:80/img',
+    API_WS: process.env.API_WS || 'http://localhost:2000'
   }
 }

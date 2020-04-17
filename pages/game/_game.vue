@@ -30,22 +30,22 @@
       </el-col>
       <el-col :md="12" :xs="24">
         <ProfileDetail label="Platform">
-          {{ gameProfile.platform }}
+          {{
+          gameProfile.platform
+          }}
         </ProfileDetail>
         <ProfileDetail label="Price">{{ gameProfile.list }}</ProfileDetail>
         <ProfileDetail label="Rating">{{ gameProfile.rating }}</ProfileDetail>
         <ProfileDetail label="Release Date">
-          {{ gameProfile.release }}
+          {{
+          gameProfile.release
+          }}
         </ProfileDetail>
-        <ProfileDetail label="MetaCritic Score">{{
-          gameProfile.score
-        }}</ProfileDetail>
+        <ProfileDetail label="MetaCritic Score">{{ gameProfile.score }}</ProfileDetail>
         <ProfileDetail label="Developer">{{ gameProfile.dev }}</ProfileDetail>
         <ProfileDetail label="Publisher">{{ gameProfile.pub }}</ProfileDetail>
         <ProfileDetail label="Genre(s)">{{ gameProfile.genres }}</ProfileDetail>
-        <el-button type="primary" round @click="visitStorePage"
-          >Visit Store Page</el-button
-        >
+        <el-button type="primary" round @click="visitStorePage">Visit Store Page</el-button>
       </el-col>
     </el-row>
     <el-row>
@@ -64,10 +64,7 @@
         />
       </el-col>-->
       <el-col :md="12" :sm="24">
-        <CategoryDisplay
-          :category="gameProfile.platform.String"
-          :list="platformSuggestions"
-        />
+        <CategoryDisplay :category="gameProfile.platform.String" :list="platformSuggestions" />
       </el-col>
     </el-row>
   </el-main>
