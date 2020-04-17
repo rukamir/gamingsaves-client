@@ -77,8 +77,8 @@
 import PriceChart from '~/components/PriceChart'
 import CategoryDisplay from '~/components/CategoryDisplay'
 import ProfileDetail from '~/components/ProfileDetail'
-const IMG_ENDPOINT = process.env.IMG_ENDPOINT || 'http://localhost:80/img'
-const API_WS = process.env.API_WS || 'http://localhost:2000'
+const IMG_ENDPOINT = process.env.IMG_ENDPOINT
+const API_WS = process.env.API_WS
 
 export default {
   name: 'GameProfilePage',

@@ -17,7 +17,7 @@
 </template>
 
 <script>
-const API_WS = process.env.API_WS || 'http://localhost:2000'
+const API_WS = process.env.API_WS
 export default {
   name: 'DealHeader',
   data() {

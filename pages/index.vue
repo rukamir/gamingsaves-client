@@ -20,7 +20,7 @@
 
 <script>
 import CategoryDisplay from '~/components/CategoryDisplay.vue'
-const API_WS = process.env.API_WS || 'http://localhost:2000'
+const API_WS = process.env.API_WS
 
 export default {
   components: {
