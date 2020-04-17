@@ -58,5 +58,9 @@ export default {
      ** You can extend webpack config here
      */
     extend(config, ctx) {}
+  },
+  env: {
+    IMG_ENDPOINT: process.env.IMG_ENDPOINT || 'http://localhost:80/img',
+    API_WS: process.env.API_WS || 'http://localhost:2000'
   }
 }
