@@ -77,14 +77,13 @@
 import PriceChart from '~/components/PriceChart'
 import CategoryDisplay from '~/components/CategoryDisplay'
 import ProfileDetail from '~/components/ProfileDetail'
-const IMG_SRC = process.env.IMG_SRC
-const API_WS = process.env.API_WS
 
 export default {
   name: 'GameProfilePage',
   components: { PriceChart, CategoryDisplay, ProfileDetail },
   props: {},
   asyncData: async ({ $axios, params }) => {
+    const { API_WS } = process.env
     let gameProfile = null
     // let genreSuggestions = null
     let platformSuggestions = null
@@ -103,6 +102,8 @@ export default {
   },
   data() {
     return {
+      IMG_SRC: process.env.IMG_SRC,
+      API_WS: process.env.API_WS,
       low: { list: 999 }
     }
   },
@@ -113,7 +114,7 @@ export default {
       return 0
     },
     getImgURL() {
-      return `${IMG_SRC}/${this.gameProfile.src}/${this.gameProfile.id}`
+      return `${this.IMG_SRC}/${this.gameProfile.src}/${this.gameProfile.id}`
     }
   },
   created() {
