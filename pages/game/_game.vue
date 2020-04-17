@@ -29,17 +29,17 @@
         <el-image fit="contain" :src="getImgURL" />
       </el-col>
       <el-col :md="12" :xs="24">
-        <ProfileDetail label="Platform">
-          {{ gameProfile.platform }}
-        </ProfileDetail>
+        <ProfileDetail label="Platform">{{
+          gameProfile.platform
+        }}</ProfileDetail>
         <ProfileDetail label="Price">{{ gameProfile.list }}</ProfileDetail>
         <ProfileDetail label="Rating">{{ gameProfile.rating }}</ProfileDetail>
-        <ProfileDetail label="Release Date">
-          {{ gameProfile.release }}
-        </ProfileDetail>
-        <ProfileDetail label="MetaCritic Score">{{
-          gameProfile.score
+        <ProfileDetail label="Release Date">{{
+          gameProfile.release
         }}</ProfileDetail>
+        <ProfileDetail label="MetaCritic Score">
+          {{ gameProfile.score }}
+        </ProfileDetail>
         <ProfileDetail label="Developer">{{ gameProfile.dev }}</ProfileDetail>
         <ProfileDetail label="Publisher">{{ gameProfile.pub }}</ProfileDetail>
         <ProfileDetail label="Genre(s)">{{ gameProfile.genres }}</ProfileDetail>
@@ -77,7 +77,7 @@
 import PriceChart from '~/components/PriceChart'
 import CategoryDisplay from '~/components/CategoryDisplay'
 import ProfileDetail from '~/components/ProfileDetail'
-const IMG_ENDPOINT = process.env.IMG_ENDPOINT
+const IMG_ENDPOINT = process.env.NUXT_ENV_IMG_ENDPOINT
 const API_WS = process.env.API_WS
 
 export default {
