@@ -63,24 +63,23 @@
           :list="genreSuggestions"
         />
       </el-col>-->
-      <el-col :md="12" :sm="24">
+      <!-- <el-col :md="12" :sm="24">
         <CategoryDisplay
           :category="gameProfile.platform.String"
           :list="platformSuggestions"
         />
-      </el-col>
+      </el-col> -->
     </el-row>
   </el-main>
 </template>
 
 <script>
 import PriceChart from '~/components/PriceChart'
-import CategoryDisplay from '~/components/CategoryDisplay'
 import ProfileDetail from '~/components/ProfileDetail'
 
 export default {
   name: 'GameProfilePage',
-  components: { PriceChart, CategoryDisplay, ProfileDetail },
+  components: { PriceChart, ProfileDetail },
   props: {},
   asyncData: async ({ $axios, params }) => {
     const { API_WS } = process.env
