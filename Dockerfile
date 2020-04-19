@@ -2,7 +2,8 @@ FROM node:10.16-alpine
 
 ENV OBJ_STORAGE_ADDR=https://ewr1.vultrobjects.com
 ENV OBJ_STORAGE_PORT=443
-
+ENV IMG_ENDPOINT=https://ewr1.vultrobjects.com
+ENV API_WS=https://api.gamingsaves.com
 
 # RUN mkdir -p /home/node/app/node_modules && chown -R node:node /home/node/app
 # RUN npm i
