@@ -2,7 +2,7 @@
   <el-header>
     <el-row>
       <el-col :sm="12">
-        <nuxt-link :to="'/help'">Game Deals</nuxt-link>
+        <nuxt-link :to="'/'">Game Deals</nuxt-link>
       </el-col>
       <el-col :sm="12">
         <el-autocomplete
