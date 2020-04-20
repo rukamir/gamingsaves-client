@@ -4,20 +4,21 @@
       <div slot="header" class="clearfix">
         <span>{{ category }}</span>
       </div>
-      <div v-for="i in list" :key="i.genre" class="text item">
+      <el-row v-for="i in list" :key="i.genre" class="text item">
         <nuxt-link :to="`/game/${i.id}`">
-          <div>{{ i.title }}</div>
-          <div>{{ i.platform }}</div>
-          <div>{{ i.score }}</div>
+          <el-col :sm="9" :xs="9">{{ i.title }}</el-col>
+          <el-col :sm="9" :xs="9">{{ i.platform }}</el-col>
+          <el-col :sm="3" :xs="3">{{ i.score }}</el-col>
+          <el-col :sm="3" :xs="3">{{ i.list }}</el-col>
         </nuxt-link>
-      </div>
+      </el-row>
     </el-card>
   </div>
 </template>
 
 <style scoped>
 .box-card {
-  min-width: 325px;
+  min-width: 30%;
   margin: auto;
 }
 </style>

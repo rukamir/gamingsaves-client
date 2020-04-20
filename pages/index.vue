@@ -3,7 +3,7 @@
     <el-main>
       <el-row>
         <!-- eslint-disable-next-line prettier/prettier -->
-        <el-col v-for="cat in topplatform" :key="cat.category" :sm="8" :md="8" :lg="4">
+        <el-col v-for="cat in topplatform" :key="cat.category" :md="6" :sm="8" :xs="24">
           <CategoryDisplay :category="cat.category" :list="cat.games" />
         </el-col>
       </el-row>
@@ -41,6 +41,12 @@ export default {
       topgenre: genreLists,
       topplatform: platformLists,
       name: 'Jimmy'
+    }
+  },
+  head() {
+    return {
+      title:
+        'GamingSaves.com: Find digital deals on Xbox, PlayStation, and Nintendo consoles.'
     }
   }
 }

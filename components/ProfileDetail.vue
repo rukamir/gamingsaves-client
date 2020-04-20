@@ -1,7 +1,7 @@
 <template>
   <el-row>
-    <el-col :sm="12">{{ label }}</el-col>
-    <el-col :sm="12">
+    <el-col :sm="12" :xs="12">{{ label }}</el-col>
+    <el-col :sm="12" :xs="12">
       <slot></slot>
     </el-col>
   </el-row>

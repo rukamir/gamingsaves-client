@@ -1,10 +1,10 @@
 <template>
   <el-header>
     <el-row>
-      <el-col :sm="12">
-        <nuxt-link :to="'/'">Game Deals</nuxt-link>
+      <el-col :sm="12" :xs="12">
+        <nuxt-link :to="'/'">GamingSaves.com</nuxt-link>
       </el-col>
-      <el-col :sm="12">
+      <el-col :sm="12" :xs="12">
         <el-autocomplete
           v-model="searchterm"
           :fetch-suggestions="querySearchAsync"
