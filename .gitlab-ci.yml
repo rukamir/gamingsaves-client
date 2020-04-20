@@ -31,6 +31,5 @@ deploy-prod:
     - scp -i $SSH_KEY $CI_PROJECT_DIR/gamingsaves-fe.docker  jimmy@$PROD_ADDR:/home/jimmy/gamingsaves-fe.docker
     - ssh -i $SSH_KEY jimmy@$PROD_ADDR docker load -i /home/jimmy/gamingsaves-fe.docker
     - ssh -i $SSH_KEY jimmy@$PROD_ADDR /home/jimmy/scripts/fe-start.sh
-    only:
-      - master
-  
+  only:
+    - master
