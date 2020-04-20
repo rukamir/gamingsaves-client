@@ -2,15 +2,20 @@
   <div class="container">
     <el-main>
       <el-row>
+        <el-col>Top Games on Sale by Console</el-col>
+      </el-row>
+      <el-row>
         <!-- eslint-disable-next-line prettier/prettier -->
         <el-col v-for="cat in topplatform" :key="cat.category" :md="6" :sm="8" :xs="24">
           <CategoryDisplay :category="cat.category" :list="cat.games" />
         </el-col>
       </el-row>
-
+      <el-row>
+        <el-col>Top Games on Sale by Genre</el-col>
+      </el-row>
       <el-row>
         <!-- eslint-disable-next-line prettier/prettier -->
-        <el-col v-for="cat in topgenre" :key="cat.category" :sm="8" :md="8" :lg="4">
+        <el-col v-for="cat in topgenre" :key="cat.category" :md="6" :sm="8" :xs="24">
           <CategoryDisplay :category="cat.category" :list="cat.games" />
         </el-col>
       </el-row>
@@ -30,8 +35,8 @@ export default {
     let platformLists = null
     let genreLists = null
     try {
-      platformLists = await $axios.$get(API_WS + '/top/platform/all')
-      genreLists = await $axios.$get(API_WS + '/top/genre/all')
+      platformLists = await $axios.$get(API_WS + '/top/platform/modern')
+      genreLists = await $axios.$get(API_WS + '/top/genre/picks')
     } catch (err) {
       // eslint-disable-next-line no-console
       console.log('Error:', err.message)

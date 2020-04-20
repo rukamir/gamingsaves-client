@@ -7,6 +7,7 @@
         title="Buy NOW: Lowest Price"
         type="success"
         description="The current price is the lowest price tracked."
+        :closable="false"
         show-icon
       ></el-alert>
       <el-alert
@@ -14,6 +15,7 @@
         title="Buy If Needed"
         type="warning"
         description="This item is currently on sale but a lower price has been available."
+        :closable="false"
         show-icon
       ></el-alert>
       <el-alert
@@ -21,6 +23,7 @@
         title="Wait to Buy: Currently listed at MSRP"
         type="info"
         description="This is game not on sale. It is advised to wait for a sale before purchase."
+        :closable="false"
         show-icon
       ></el-alert>
     </div>
@@ -29,17 +32,17 @@
         <el-image fit="contain" :src="getImgURL" />
       </el-col>
       <el-col :sm="12" :xs="12">
-        <ProfileDetail label="Platform">{{
-          gameProfile.platform
-        }}</ProfileDetail>
+        <ProfileDetail label="Platform">
+          {{ gameProfile.platform }}
+        </ProfileDetail>
         <ProfileDetail label="Price">{{ gameProfile.list }}</ProfileDetail>
         <ProfileDetail label="Rating">{{ gameProfile.rating }}</ProfileDetail>
-        <ProfileDetail label="Release Date">{{
-          gameProfile.release
-        }}</ProfileDetail>
-        <ProfileDetail label="MetaCritic Score">
-          {{ gameProfile.score }}
+        <ProfileDetail label="Release Date">
+          {{ gameProfile.release }}
         </ProfileDetail>
+        <ProfileDetail label="MetaCritic Score">{{
+          gameProfile.score
+        }}</ProfileDetail>
         <ProfileDetail label="Developer">{{ gameProfile.dev }}</ProfileDetail>
         <ProfileDetail label="Publisher">{{ gameProfile.pub }}</ProfileDetail>
         <ProfileDetail label="Genre(s)">{{ gameProfile.genres }}</ProfileDetail>
@@ -63,12 +66,12 @@
           :list="genreSuggestions"
         />
       </el-col>-->
-      <!-- <el-col :md="12" :sm="24">
+      <el-col :md="12" :sm="24">
         <CategoryDisplay
-          :category="gameProfile.platform.String"
+          :category="gameProfile.platform"
           :list="platformSuggestions"
         />
-      </el-col>-->
+      </el-col>
     </el-row>
   </el-main>
 </template>
@@ -76,10 +79,11 @@
 <script>
 import PriceChart from '~/components/PriceChart'
 import ProfileDetail from '~/components/ProfileDetail'
+import CategoryDisplay from '~/components/CategoryDisplay'
 
 export default {
   name: 'GameProfilePage',
-  components: { PriceChart, ProfileDetail },
+  components: { PriceChart, CategoryDisplay, ProfileDetail },
   props: {},
   asyncData: async ({ $axios, params }) => {
     const { API_WS } = process.env
@@ -92,7 +96,7 @@ export default {
       //   'http://localhost:2000/top/genre/multi?value=' + gameProfile.genres[0]
       // )
       platformSuggestions = await $axios.$get(
-        API_WS + '/top/platform?value=' + gameProfile.platform.String
+        API_WS + '/top/platform?value=' + gameProfile.platform
       )
     } catch (err) {
       // genreSuggestions = null
