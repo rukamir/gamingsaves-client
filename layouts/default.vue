@@ -1,7 +1,13 @@
 <template>
   <div>
     <DealHeader />
-    <nuxt />
+    <el-row>
+      <el-col :md="3" :sm="24" :xs="24"> AD AD AD </el-col>
+      <el-col :md="18" :sm="24" :xs="24">
+        <nuxt />
+      </el-col>
+      <el-col :md="3" :sm="24" :xs="24"> AD AD AD </el-col>
+    </el-row>
   </div>
 </template>
 
