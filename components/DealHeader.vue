@@ -1,14 +1,17 @@
 <template>
   <el-header>
     <el-row>
-      <el-col :sm="12" :xs="12">
+      <el-col :sm="12" :xs="24">
         <nuxt-link :to="'/'">GamingSaves.com</nuxt-link>
       </el-col>
-      <el-col :sm="12" :xs="12">
+      <el-col :sm="12" :xs="24">
         <el-autocomplete
           v-model="searchterm"
           :fetch-suggestions="querySearchAsync"
           placeholder="Please input"
+          :trigger-on-focus="false"
+          :hide-loading="true"
+          :style="{ width: '100%' }"
           @select="handleSelect"
         ></el-autocomplete>
       </el-col>
