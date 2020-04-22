@@ -1,7 +1,7 @@
 <template>
   <el-header>
-    <el-row>
-      <el-col :sm="12" :xs="24">
+    <el-row id="heading-section">
+      <el-col class="site-title" :sm="12" :xs="24">
         <nuxt-link :to="'/'">GamingSaves.com</nuxt-link>
       </el-col>
       <el-col :sm="12" :xs="24">
@@ -18,6 +18,16 @@
     </el-row>
   </el-header>
 </template>
+<style scoped>
+#heading-section {
+  padding: 10px;
+  margin-bottom: 10px;
+}
+.site-title {
+  font-size: 20px;
+  line-height: 1.7;
+}
+</style>
 
 <script>
 const API_WS = process.env.API_WS

@@ -1,7 +1,12 @@
 <template>
   <div>
     <!-- eslint-disable-next-line prettier/prettier -->
-    <GChart type="LineChart" :settings="settings" :data="chartData" :options="chartOptions" />
+    <GChart
+      type="LineChart"
+      :settings="settings"
+      :data="chartData"
+      :options="chartOptions"
+    />
   </div>
 </template>
 
@@ -41,6 +46,7 @@ export default {
         hAxis: {
           minValue: this.maxHistDate
         },
+        legend: { position: 'none' },
         height: 400,
         colors: ['#1b9e77', '#d95f02', '#7570b3']
       }

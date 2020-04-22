@@ -27,8 +27,8 @@
         show-icon
       ></el-alert>
     </div>
-    <el-row>
-      <el-col :sm="12" :xs="8">
+    <el-row class="main-section-row">
+      <el-col :sm="10" :xs="8">
         <el-image
           class="cover-image"
           fit="contain"
@@ -40,7 +40,7 @@
           </div>
         </el-image>
       </el-col>
-      <el-col :sm="12" :xs="16">
+      <el-col :sm="14" :xs="16">
         <ProfileDetail label="Platform">
           {{ gameProfile.platform }}
         </ProfileDetail>
@@ -92,8 +92,13 @@
   font-size: 20px;
   line-height: 1.7;
 }
+.main-section-row {
+  border: none;
+}
 .cover-image {
-  padding: 0.5em;
+  padding: 1rem;
+  display: block;
+  margin: auto;
 }
 .description-body {
   font-size: 16px;
