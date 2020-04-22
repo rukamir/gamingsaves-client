@@ -7,8 +7,8 @@
       <el-row v-for="i in list" :key="i.genre">
         <div class="item-entry">
           <nuxt-link :to="`/game/${i.id}`">
-            <el-col :sm="12" :xs="9">{{ i.title }}</el-col>
-            <el-col :sm="3" :xs="9"><PlatformTag :value="i.platform"/></el-col>
+            <el-col :sm="12" :xs="12">{{ i.title }}</el-col>
+            <el-col :sm="3" :xs="3"><PlatformTag :value="i.platform"/></el-col>
             <el-col :sm="3" :xs="3">{{ i.score || 0 }}</el-col>
             <el-col :sm="3" :xs="3">{{ i.list }}</el-col>
           </nuxt-link>

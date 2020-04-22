@@ -28,14 +28,19 @@
       ></el-alert>
     </div>
     <el-row>
-      <el-col :sm="12" :xs="12">
-        <el-image class="cover-image" fit="contain" :src="getImgURL">
+      <el-col :sm="12" :xs="8">
+        <el-image
+          class="cover-image"
+          fit="contain"
+          :src="getImgURL"
+          :preview-src-list="[getImgURL]"
+        >
           <div slot="error" class="image-slot">
             <i class="el-icon-picture-outline"></i>
           </div>
         </el-image>
       </el-col>
-      <el-col :sm="12" :xs="12">
+      <el-col :sm="12" :xs="16">
         <ProfileDetail label="Platform">
           {{ gameProfile.platform }}
         </ProfileDetail>
@@ -88,7 +93,7 @@
   line-height: 1.7;
 }
 .cover-image {
-  padding: 1.5em;
+  padding: 0.5em;
 }
 .description-body {
   font-size: 16px;
