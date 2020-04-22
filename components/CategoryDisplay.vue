@@ -22,6 +22,7 @@
 .item-entry {
   height: 1.5rem;
   margin: 0.5em;
+  width: 100%;
 }
 .item-entry:not(:last-child) {
   border: none;
