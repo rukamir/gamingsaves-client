@@ -29,7 +29,11 @@
     </div>
     <el-row>
       <el-col :sm="12" :xs="12">
-        <el-image fit="contain" :src="getImgURL" />
+        <el-image class="cover-image" fit="contain" :src="getImgURL">
+          <div slot="error" class="image-slot">
+            <i class="el-icon-picture-outline"></i>
+          </div>
+        </el-image>
       </el-col>
       <el-col :sm="12" :xs="12">
         <ProfileDetail label="Platform">
@@ -38,7 +42,7 @@
         <ProfileDetail label="Price">{{ gameProfile.list }}</ProfileDetail>
         <ProfileDetail label="Rating">{{ gameProfile.rating }}</ProfileDetail>
         <ProfileDetail label="Release Date">
-          {{ gameProfile.release }}
+          {{ displayDate }}
         </ProfileDetail>
         <ProfileDetail label="MetaCritic Score">{{
           gameProfile.score
@@ -76,7 +80,14 @@
   </el-main>
 </template>
 
+<style scoped>
+.cover-image {
+  padding: 1.5em;
+}
+</style>
+
 <script>
+import moment from 'moment'
 import PriceChart from '~/components/PriceChart'
 import ProfileDetail from '~/components/ProfileDetail'
 import CategoryDisplay from '~/components/CategoryDisplay'
@@ -118,6 +129,9 @@ export default {
     },
     getImgURL() {
       return `${this.IMG_SRC}/${this.gameProfile.src}/${this.gameProfile.id}`
+    },
+    displayDate() {
+      return moment(this.gameProfile.release).format('L')
     }
   },
   created() {
