@@ -6,9 +6,9 @@
       </div>
       <el-row v-for="i in list" :key="i.genre" class="text item">
         <nuxt-link :to="`/game/${i.id}`">
-          <el-col :sm="9" :xs="9">{{ i.title }}</el-col>
-          <el-col :sm="9" :xs="9">{{ i.platform }}</el-col>
-          <el-col :sm="3" :xs="3">{{ i.score }}</el-col>
+          <el-col :sm="12" :xs="9">{{ i.title }}</el-col>
+          <el-col :sm="3" :xs="9"><PlatformTag :value="i.platform"/></el-col>
+          <el-col :sm="3" :xs="3">{{ i.score || 0 }}</el-col>
           <el-col :sm="3" :xs="3">{{ i.list }}</el-col>
         </nuxt-link>
       </el-row>
@@ -24,8 +24,11 @@
 </style>
 
 <script>
+import PlatformTag from '~/components/PlatformTag'
+
 export default {
   name: 'CategoryDisplay',
+  components: { PlatformTag },
   props: {
     category: { type: String, default: 'Category' },
     list: {
