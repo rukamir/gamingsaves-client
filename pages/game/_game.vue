@@ -1,6 +1,6 @@
 <template>
   <el-main>
-    <div>{{ gameProfile.title }}</div>
+    <div id="game-title">{{ gameProfile.title }}</div>
     <div>
       <el-alert
         v-if="isCurrentLowPrice === 1"
@@ -40,12 +40,14 @@
           {{ gameProfile.platform }}
         </ProfileDetail>
         <ProfileDetail label="Price">{{ gameProfile.list }}</ProfileDetail>
-        <ProfileDetail label="Rating">{{ gameProfile.rating }}</ProfileDetail>
+        <ProfileDetail label="Rating">{{
+          gameProfile.rating || 'N/A'
+        }}</ProfileDetail>
         <ProfileDetail label="Release Date">
           {{ displayDate }}
         </ProfileDetail>
         <ProfileDetail label="MetaCritic Score">{{
-          gameProfile.score
+          gameProfile.score || 0
         }}</ProfileDetail>
         <ProfileDetail label="Developer">{{ gameProfile.dev }}</ProfileDetail>
         <ProfileDetail label="Publisher">{{ gameProfile.pub }}</ProfileDetail>
@@ -63,7 +65,7 @@
     <el-row>
       <el-col>{{ gameProfile.desc }}</el-col>
     </el-row>
-    <el-row>
+    <el-row type="flex" justify="center">
       <!-- <el-col :md="12" :sm="24">
         <CategoryDisplay
           :category="gameProfile.genres[0]"
@@ -81,6 +83,10 @@
 </template>
 
 <style scoped>
+#game-title {
+  font-size: 20px;
+  line-height: 1.7;
+}
 .cover-image {
   padding: 1.5em;
 }
