@@ -1,26 +1,24 @@
 <template>
-  <div class="container">
-    <el-main>
-      <el-row>
-        <el-col>Top Games on Sale by Console</el-col>
-      </el-row>
-      <el-row :gutter="5">
-        <!-- eslint-disable-next-line prettier/prettier -->
-        <el-col v-for="cat in topplatform" :key="cat.category" :sm="8" :xs="24">
-          <CategoryDisplay :category="cat.category" :list="cat.games" />
-        </el-col>
-      </el-row>
-      <el-row>
-        <el-col>Top Games on Sale by Genre</el-col>
-      </el-row>
-      <el-row :gutter="5">
-        <!-- eslint-disable-next-line prettier/prettier -->
-        <el-col v-for="cat in topgenre" :key="cat.category" :sm="8" :xs="24">
-          <CategoryDisplay :category="cat.category" :list="cat.games" />
-        </el-col>
-      </el-row>
-    </el-main>
-  </div>
+  <el-main>
+    <el-row>
+      <el-col>Top Games on Sale by Console</el-col>
+    </el-row>
+    <el-row :gutter="5">
+      <!-- eslint-disable-next-line prettier/prettier -->
+      <el-col v-for="cat in topplatform" :key="cat.category" :sm="8" :xs="24">
+        <CategoryDisplay :category="cat.category" :list="cat.games" />
+      </el-col>
+    </el-row>
+    <el-row>
+      <el-col>Top Games on Sale by Genre</el-col>
+    </el-row>
+    <el-row :gutter="5">
+      <!-- eslint-disable-next-line prettier/prettier -->
+      <el-col v-for="cat in topgenre" :key="cat.category" :sm="8" :xs="24">
+        <CategoryDisplay :category="cat.category" :list="cat.games" />
+      </el-col>
+    </el-row>
+  </el-main>
 </template>
 
 <script>

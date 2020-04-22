@@ -1,28 +1,42 @@
 <template>
-  <div>
-    <el-card class="box-card">
-      <div slot="header" class="clearfix">
-        <span>{{ category }}</span>
-      </div>
-      <el-row v-for="i in list" :key="i.genre">
-        <div class="item-entry">
-          <nuxt-link :to="`/game/${i.id}`">
-            <el-col :sm="12" :xs="12">{{ i.title }}</el-col>
-            <el-col :sm="3" :xs="3"><PlatformTag :value="i.platform"/></el-col>
-            <el-col :sm="3" :xs="3">{{ i.score || 0 }}</el-col>
-            <el-col :sm="3" :xs="3">{{ i.list }}</el-col>
-          </nuxt-link>
-        </div>
+  <el-card class="box-card">
+    <div slot="header" class="clearfix">
+      <span>{{ category }}</span>
+    </div>
+    <div>
+      <el-row>
+        <el-col :span="18">
+          Title
+        </el-col>
+        <el-col :span="3">
+          MC
+        </el-col>
+        <el-col :span="3">
+          Price
+        </el-col>
       </el-row>
-    </el-card>
-  </div>
+    </div>
+    <el-row v-for="i in list" :key="i.genre">
+      <div class="item-entry" @click="gotoGamePage(i.id)">
+        <el-col :span="18"
+          ><PlatformTag :value="i.platform" />{{ i.title }}</el-col
+        >
+        <el-col :span="3">{{ i.score || 0 }}</el-col>
+        <el-col :span="3">{{ i.list }}</el-col>
+      </div>
+    </el-row>
+  </el-card>
 </template>
 
 <style scoped>
 .item-entry {
+  min-height: 46px;
   height: 1.5rem;
-  margin: 0.5em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  margin: auto;
   width: 100%;
+  text-align: left;
 }
 .item-entry:not(:last-child) {
   border: none;
@@ -50,6 +64,11 @@ export default {
   },
   data() {
     return {}
+  },
+  methods: {
+    gotoGamePage(id) {
+      this.$router.push({ path: `/game/${id}` })
+    }
   }
 }
 </script>

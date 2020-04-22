@@ -1,22 +1,14 @@
 <template>
-  <div>
-    <style>
-      :root {
-        border-color: 'red';
-        background-color: 'blue';
-        color: 'yellow';
-      }
-    </style>
-    <el-tag
-      size="mini"
-      :style="{
-        'border-color': outColor,
-        'background-color': bgColor,
-        color: outColor
-      }"
-      >{{ abbv }}</el-tag
-    >
-  </div>
+  <el-tag
+    size="mini"
+    :style="{
+      'border-color': outColor,
+      'background-color': bgColor,
+      color: outColor,
+      display: 'inline'
+    }"
+    >{{ abbv }}</el-tag
+  >
 </template>
 
 <script>
