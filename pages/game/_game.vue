@@ -63,7 +63,7 @@
       </client-only>
     </el-row>
     <el-row>
-      <el-col>{{ gameProfile.desc }}</el-col>
+      <el-col class="description-body">{{ gameProfile.desc }}</el-col>
     </el-row>
     <el-row type="flex" justify="center">
       <!-- <el-col :md="12" :sm="24">
@@ -89,6 +89,10 @@
 }
 .cover-image {
   padding: 1.5em;
+}
+.description-body {
+  font-size: 16px;
+  line-height: 1.3;
 }
 </style>
 
