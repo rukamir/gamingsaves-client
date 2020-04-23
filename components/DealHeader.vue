@@ -1,8 +1,19 @@
 <template>
-  <el-header>
+  <el-header id="header-container">
     <el-row id="heading-section">
-      <el-col class="site-title" :sm="12" :xs="24">
-        <nuxt-link :to="'/'">GamingSaves.com</nuxt-link>
+      <el-col :sm="12" :xs="24">
+        <nuxt-link
+          :style="{
+            font: '24px',
+            color: 'white',
+            'font-weight': 700,
+            'text-decoration': 'none'
+          }"
+          :to="'/'"
+        >
+          <div id="title-main">GamingSaves.com</div>
+          <div id="title-sub">Shop all platforms at once.</div>
+        </nuxt-link>
       </el-col>
       <el-col :sm="12" :xs="24">
         <el-autocomplete
@@ -18,14 +29,24 @@
     </el-row>
   </el-header>
 </template>
+
 <style scoped>
+#title-main {
+  font-size: 24px;
+}
+#title-sub {
+  font-size: 16px;
+  line-height: 0.75;
+  padding-bottom: 10px;
+}
+#header-container {
+  border-bottom: 2px solid #683c99;
+  background: #be8fff;
+  height: auto;
+}
 #heading-section {
   padding: 10px;
   margin-bottom: 10px;
-}
-.site-title {
-  font-size: 20px;
-  line-height: 1.7;
 }
 </style>
 
