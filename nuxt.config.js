@@ -48,7 +48,13 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     // Doc: https://github.com/nuxt-community/dotenv-module
-    '@nuxtjs/dotenv'
+    '@nuxtjs/dotenv',
+    [
+      '@nuxtjs/google-adsense',
+      {
+        id: 'ca-pub-1111913940711546'
+      }
+    ]
   ],
   /*
    ** Axios module configuration
