@@ -40,7 +40,7 @@
   padding-bottom: 10px;
 }
 #header-container {
-  border-bottom: 2px solid #683c99;
+  border-bottom: 3px solid #683c99;
   background: #be8fff;
   height: auto;
 }

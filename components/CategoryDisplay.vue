@@ -49,7 +49,7 @@
   font-size: 20px;
   background: #be8fff;
   margin: auto;
-  border-radius: 8px 10px 0 0;
+  border-radius: 9px 9px 0 0;
   padding: 10px;
   border-bottom: 3px solid #683c99;
 }
