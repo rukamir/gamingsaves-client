@@ -2,11 +2,11 @@
   <div :style="{ background: '#f2f2f2' }">
     <DealHeader />
     <el-row>
-      <el-col :lg="3" :sm="24" :xs="24"><adsbygoogle /></el-col>
+      <el-col :lg="3" :sm="24" :xs="24">AD AD AD</el-col>
       <el-col :lg="18" :sm="24" :xs="24">
         <nuxt />
       </el-col>
-      <el-col :lg="3" :sm="24" :xs="24"><adsbygoogle /></el-col>
+      <el-col :lg="3" :sm="24" :xs="24">AD AD AD</el-col>
     </el-row>
   </div>
 </template>
