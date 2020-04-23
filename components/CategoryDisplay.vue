@@ -55,7 +55,7 @@
 }
 .box-card {
   min-width: 30%;
-  margin: auto;
+  margin: 0.5em 0 0.5em 0;
   border-radius: 14px;
   border-color: #683c99;
   border: 3px solid #683c99;

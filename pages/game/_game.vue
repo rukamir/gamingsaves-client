@@ -1,7 +1,7 @@
 <template>
   <el-main>
     <div class="game-body-main">
-      <div id="game-title" class="game-body-header">
+      <div class="game-body-header">
         {{ gameProfile.title }}
       </div>
       <div>
@@ -121,10 +121,6 @@
   font-size: 24px;
   margin: auto;
   padding: 10px 1em 10px 1em;
-}
-#game-title {
-  font-size: 20px;
-  line-height: 1.7;
 }
 .main-section-row {
   border: none;
