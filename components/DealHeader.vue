@@ -61,7 +61,7 @@ export default {
     async querySearchAsync(queryString, cb) {
       try {
         const results = await this.$axios.$get(
-          API_WS + '/simple-search?value=' + queryString
+          API_WS + '/v1/simple-search?value=' + queryString
         )
         cb(
           results.map((e) => ({

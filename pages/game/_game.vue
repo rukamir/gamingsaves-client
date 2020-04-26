@@ -1,9 +1,7 @@
 <template>
   <el-main>
     <div class="game-body-main">
-      <div class="game-body-header">
-        {{ gameProfile.title }}
-      </div>
+      <div class="game-body-header">{{ gameProfile.title }}</div>
       <div>
         <el-alert
           v-if="isCurrentLowPrice === 1"
@@ -44,22 +42,28 @@
           </el-image>
         </el-col>
         <el-col :sm="14" :xs="16">
-          <ProfileDetail label="Platform">
-            {{ gameProfile.platform }}
+          <ProfileDetail label="Platform">{{
+            gameProfile.platform
+          }}</ProfileDetail>
+          <ProfileDetail label="Price">
+            <PriceDisplay
+              :list="gameProfile.list"
+              :msrp="gameProfile.msrp"
+              :discount="gameProfile.discount"
+            />
           </ProfileDetail>
-          <ProfileDetail label="Price">{{ gameProfile.list }}</ProfileDetail>
-          <ProfileDetail label="Rating">{{
-            gameProfile.rating || 'N/A'
-          }}</ProfileDetail>
+          <ProfileDetail label="Rating">
+            {{ gameProfile.rating || 'N/A' }}
+          </ProfileDetail>
           <ProfileDetail label="Release Date">{{ displayDate }}</ProfileDetail>
-          <ProfileDetail label="MetaCritic Score">{{
-            gameProfile.score || 0
-          }}</ProfileDetail>
+          <ProfileDetail label="MetaCritic Score">
+            {{ gameProfile.score || 0 }}
+          </ProfileDetail>
           <ProfileDetail label="Developer">{{ gameProfile.dev }}</ProfileDetail>
           <ProfileDetail label="Publisher">{{ gameProfile.pub }}</ProfileDetail>
-          <ProfileDetail label="Genre(s)">
-            {{ gameProfile.genres }}
-          </ProfileDetail>
+          <ProfileDetail label="Genre(s)">{{
+            gameProfile.genres
+          }}</ProfileDetail>
           <el-button type="primary" round @click="visitStorePage"
             >Visit Store Page</el-button
           >
@@ -76,14 +80,14 @@
         <el-col class="description-body">{{ gameProfile.desc }}</el-col>
       </el-row>
     </div>
-    <el-row type="flex" justify="center">
-      <!-- <el-col :md="12" :sm="24">
+    <el-row :gutter="35">
+      <el-col :md="12" :sm="24" :xs="24">
         <CategoryDisplay
-          :category="gameProfile.genres[0]"
-          :list="genreSuggestions"
+          category="Popular on this Platform"
+          :list="popularPlatform"
         />
-      </el-col>-->
-      <el-col :md="12" :sm="24">
+      </el-col>
+      <el-col :md="12" :sm="24" :xs="24">
         <CategoryDisplay
           :category="gameProfile.platform"
           :list="platformSuggestions"
@@ -142,28 +146,33 @@ import moment from 'moment'
 import PriceChart from '~/components/PriceChart'
 import ProfileDetail from '~/components/ProfileDetail'
 import CategoryDisplay from '~/components/CategoryDisplay'
+import PriceDisplay from '~/components/indiv/PriceDisplay'
 
 export default {
   name: 'GameProfilePage',
-  components: { PriceChart, CategoryDisplay, ProfileDetail },
+  components: { PriceChart, CategoryDisplay, ProfileDetail, PriceDisplay },
   props: {},
   asyncData: async ({ $axios, params }) => {
     const { API_WS } = process.env
     let gameProfile = null
     // let genreSuggestions = null
     let platformSuggestions = null
+    let popularPlatform = null
     try {
-      gameProfile = await $axios.$get(API_WS + '/game/' + params.game)
+      gameProfile = await $axios.$get(API_WS + '/v1/game/' + params.game)
       // genreSuggestions = await $axios.$get(
       //   'http://localhost:2000/top/genre/multi?value=' + gameProfile.genres[0]
       // )
       platformSuggestions = await $axios.$get(
         API_WS + '/top/platform?value=' + gameProfile.platform
       )
+      popularPlatform = await $axios.$get(
+        API_WS + '/v1/popular?platform=' + gameProfile.platform
+      )
     } catch (err) {
       // genreSuggestions = null
     }
-    return { gameProfile, platformSuggestions }
+    return { gameProfile, platformSuggestions, popularPlatform }
   },
   data() {
     return {

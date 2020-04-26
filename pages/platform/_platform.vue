@@ -1,0 +1,63 @@
+<template>
+  <div>
+    <SectionBanner :title="platformTitle" />
+    <CategoryDisplayDetailed category="Most Popular" :list="popularList" />
+    <CategoryDisplayDetailed
+      category="Recent Releases on Sale"
+      :list="recentList"
+    />
+    <el-row :gutter="50">
+      <el-col :sm="12" :xs="24">
+        <CategoryDisplay category="On Sale Under $10" :list="undertenList" />
+      </el-col>
+      <el-col :sm="12" :xs="24">
+        <CategoryDisplay category="On Sale Under $20" :list="undertwentyList" />
+      </el-col>
+    </el-row>
+  </div>
+</template>
+
+<script>
+import SectionBanner from '~/components/SectionBanner'
+import CategoryDisplayDetailed from '~/components/CategoryDisplayDetailed'
+import CategoryDisplay from '~/components/CategoryDisplay'
+
+export default {
+  name: 'PlatformPage',
+  components: { SectionBanner, CategoryDisplayDetailed, CategoryDisplay },
+  asyncData: async ({ $axios, params }) => {
+    const { API_WS } = process.env
+    let popularList = null
+    let recentList = null
+    let highscoreList = null
+    let undertenList = null
+    let undertwentyList = null
+
+    try {
+      popularList = await $axios.$get(
+        API_WS + '/v1/popular?platform=' + params.platform
+      )
+      recentList = await $axios.$get(
+        API_WS + '/v1/recent?platform=' + params.platform
+      )
+      highscoreList = await $axios.$get(API_WS + '/v1/top/' + params.platform)
+      undertwentyList = await $axios.$get(
+        API_WS + '/v1/top/' + params.platform + '?under=20'
+      )
+      undertenList = await $axios.$get(
+        API_WS + '/v1/top/' + params.platform + '?under=10'
+      )
+    } catch (err) {
+      // something
+    }
+    return {
+      platformTitle: params.platform,
+      popularList,
+      recentList,
+      highscoreList,
+      undertwentyList,
+      undertenList
+    }
+  }
+}
+</script>

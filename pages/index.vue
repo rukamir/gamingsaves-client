@@ -1,17 +1,28 @@
 <template>
   <el-main>
-    <el-row>
-      <el-col>Top Games on Sale by Console</el-col>
-    </el-row>
+    <SectionBanner
+      title="GamingSaves"
+      sub="Shop Xbox Live, PlayStation Network, and Nintendo eShop at the same time."
+    >
+      <el-row>
+        <el-col
+          v-for="i in platformsAvailable"
+          :key="i"
+          :md="4"
+          :sm="4"
+          :xs="8"
+        >
+          <el-button @click="gotoConsolePage(i)">{{ i }}</el-button>
+        </el-col>
+      </el-row>
+    </SectionBanner>
     <el-row :gutter="5">
       <!-- eslint-disable-next-line prettier/prettier -->
       <el-col v-for="cat in topplatform" :key="cat.category" :sm="8" :xs="24">
         <CategoryDisplay :category="cat.category" :list="cat.games" />
       </el-col>
     </el-row>
-    <el-row>
-      <el-col>Top Games on Sale by Genre</el-col>
-    </el-row>
+    <SectionBanner title="Top Games on Sale by Genre" />
     <el-row :gutter="5">
       <!-- eslint-disable-next-line prettier/prettier -->
       <el-col v-for="cat in topgenre" :key="cat.category" :sm="8" :xs="24">
@@ -23,18 +34,22 @@
 
 <script>
 import CategoryDisplay from '~/components/CategoryDisplay.vue'
+import SectionBanner from '~/components/SectionBanner'
 const API_WS = process.env.API_WS
 
 export default {
   components: {
-    CategoryDisplay
+    CategoryDisplay,
+    SectionBanner
   },
   asyncData: async ({ $axios }) => {
     let platformLists = null
     let genreLists = null
+    let platformsAvailable = null
     try {
       platformLists = await $axios.$get(API_WS + '/top/platform/modern')
       genreLists = await $axios.$get(API_WS + '/top/genre/picks')
+      platformsAvailable = await $axios.$get(API_WS + '/v1/platform/available')
     } catch (err) {
       // eslint-disable-next-line no-console
       console.log('Error:', err.message)
@@ -43,7 +58,13 @@ export default {
     return {
       topgenre: genreLists,
       topplatform: platformLists,
+      platformsAvailable,
       name: 'Jimmy'
+    }
+  },
+  methods: {
+    gotoConsolePage(console) {
+      this.$router.push({ path: `/platform/${console}` })
     }
   },
   head() {
