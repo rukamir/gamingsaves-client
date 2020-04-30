@@ -16,7 +16,7 @@
   text-align: center;
 }
 .heading-container {
-  min-height: 150px;
+  min-height: 75px;
   background: white;
   border-radius: 14px;
   border: 3px solid #683c99;
@@ -27,7 +27,7 @@
 export default {
   name: 'SectionBanner',
   props: {
-    title: { type: String, default: 'Hello World' },
+    title: { type: String, default: null },
     sub: { type: String, default: null }
   }
 }

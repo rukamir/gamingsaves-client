@@ -9,10 +9,12 @@
           v-for="i in platformsAvailable"
           :key="i"
           :md="4"
-          :sm="4"
-          :xs="8"
+          :sm="8"
+          :xs="24"
         >
-          <el-button @click="gotoConsolePage(i)">{{ i }}</el-button>
+          <el-button class="plat-button" @click="gotoConsolePage(i)">{{
+            i
+          }}</el-button>
         </el-col>
       </el-row>
     </SectionBanner>
@@ -31,6 +33,12 @@
     </el-row>
   </el-main>
 </template>
+
+<style scoped>
+.plat-button {
+  margin: auto;
+}
+</style>
 
 <script>
 import CategoryDisplay from '~/components/CategoryDisplay.vue'

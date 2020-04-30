@@ -1,6 +1,10 @@
 <template>
   <div>
     <SectionBanner :title="platformTitle" />
+    <SectionBanner
+      sub="view all games on sale"
+      @click.native="gotoDealBrowser"
+    ></SectionBanner>
     <CategoryDisplayDetailed category="Most Popular" :list="popularList" />
     <CategoryDisplayDetailed
       category="Recent Releases on Sale"
@@ -57,6 +61,11 @@ export default {
       highscoreList,
       undertwentyList,
       undertenList
+    }
+  },
+  methods: {
+    gotoDealBrowser() {
+      this.$router.push({ path: `/browser?platform=${this.platformTitle}` })
     }
   }
 }

@@ -42,11 +42,11 @@
 #header-container {
   border-bottom: 3px solid #683c99;
   background: #be8fff;
-  height: auto;
+  min-height: 125px;
 }
 #heading-section {
   padding: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 </style>
 

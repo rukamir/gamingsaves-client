@@ -5,7 +5,7 @@
       <el-row :gutter="35">
         <el-col
           v-for="i in list.slice(0, 5)"
-          :key="`${category}${i.id}`"
+          :key="`${category}${i.id}1`"
           :md="4"
           :sm="24"
           :xs="24"
@@ -20,12 +20,12 @@
                   :src="getImgURL(i)"
                 />
               </el-col>
-              <el-col :md="24" :sm="8" :xs="8" class="title">{{
-                i.title
-              }}</el-col>
-              <el-col :md="24" :sm="8" :xs="8" class="title">{{
-                i.score || 0
-              }}</el-col>
+              <el-col :md="24" :sm="8" :xs="8" class="title">
+                {{ i.title }}
+              </el-col>
+              <el-col :md="24" :sm="8" :xs="8" class="title">
+                {{ i.score || 0 }}
+              </el-col>
               <el-col :md="24" :sm="8" :xs="8">
                 <PriceDisplay
                   :list="i.list"
@@ -40,7 +40,7 @@
       <el-row :gutter="35">
         <el-col
           v-for="i in list.slice(5, 10)"
-          :key="`${category}${i.id}`"
+          :key="`${category}${i.id}2`"
           :md="4"
           :sm="24"
           :xs="24"
@@ -55,12 +55,12 @@
                   :src="getImgURL(i)"
                 />
               </el-col>
-              <el-col :md="24" :sm="8" :xs="8" class="title">{{
-                i.title
-              }}</el-col>
-              <el-col :md="24" :sm="8" :xs="8" class="title">{{
-                i.score || 0
-              }}</el-col>
+              <el-col :md="24" :sm="8" :xs="8" class="title">
+                {{ i.title }}
+              </el-col>
+              <el-col :md="24" :sm="8" :xs="8" class="title">
+                {{ i.score || 0 }}
+              </el-col>
               <el-col :md="24" :sm="8" :xs="8">
                 <PriceDisplay
                   :list="i.list"
@@ -111,12 +111,8 @@ export default {
     }
   },
   computed: {},
-  mounted() {
-    console.log({ list: this.list })
-  },
   methods: {
     gotoGamePage(id) {
-      console.log({ id })
       this.$router.push({ path: `/game/${id}` })
     },
     getImgURL(entry) {
