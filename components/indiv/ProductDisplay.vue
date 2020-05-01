@@ -2,7 +2,9 @@
   <div @click="gotoGamePage">
     <el-row class="product-container">
       <el-col :sm="4" :xs="8">{{ product.title }}</el-col>
-      <el-col :sm="4" :xs="8"><PlatformTag :value="product.platform"/></el-col>
+      <el-col :sm="4" :xs="8">
+        <PlatformTag :value="product.platform" />
+      </el-col>
       <el-col :sm="4" :xs="8">
         <PriceDisplay
           :msrp="product.msrp"

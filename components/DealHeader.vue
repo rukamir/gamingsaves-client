@@ -19,7 +19,7 @@
         <el-autocomplete
           v-model="searchterm"
           :fetch-suggestions="querySearchAsync"
-          placeholder="Please input"
+          placeholder="Search All Games"
           :trigger-on-focus="false"
           :hide-loading="true"
           :style="{ width: '100%' }"

@@ -147,6 +147,7 @@ import PriceChart from '~/components/PriceChart'
 import ProfileDetail from '~/components/ProfileDetail'
 import CategoryDisplay from '~/components/CategoryDisplay'
 import PriceDisplay from '~/components/indiv/PriceDisplay'
+import { createMetaTagsForSocial } from '~/support/meta'
 
 export default {
   name: 'GameProfilePage',
@@ -205,7 +206,20 @@ export default {
     }
   },
   head() {
-    return { title: `GamingSaves.com: ${this.gameProfile.title}` }
+    const { id, title, platform } = this.gameProfile
+    const url = `https://gamingsaves.com/game/${id}`
+    const displayTitle = `Price Tracking for ${title} on ${platform}`
+    const displayDesc = `See if ${title} is currently on sale and it's lowest price.`
+    return {
+      title: `${title} for ${platform} price history`,
+      link: [
+        {
+          rel: 'canonical',
+          href: 'https://gamingsaves.com' + this.$route.path
+        }
+      ],
+      meta: [...createMetaTagsForSocial({ url, displayTitle, displayDesc })]
+    }
   }
 }
 </script>

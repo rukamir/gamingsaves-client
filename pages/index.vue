@@ -12,9 +12,9 @@
           :sm="8"
           :xs="24"
         >
-          <el-button class="plat-button" @click="gotoConsolePage(i)">{{
-            i
-          }}</el-button>
+          <el-button class="plat-button" @click="gotoConsolePage(i)">
+            {{ i }}
+          </el-button>
         </el-col>
       </el-row>
     </SectionBanner>
@@ -43,6 +43,7 @@
 <script>
 import CategoryDisplay from '~/components/CategoryDisplay.vue'
 import SectionBanner from '~/components/SectionBanner'
+import { createMetaTagsForSocial } from '~/support/meta'
 const API_WS = process.env.API_WS
 
 export default {
@@ -76,9 +77,18 @@ export default {
     }
   },
   head() {
+    const url = `https://gamingsaves.com/`
+    const description = `Find gaming deals for Xbox, PlayStation, and Switch.`
+    const title = `GamingSaves.com: Track prices and shop cross platform`
     return {
-      title:
-        'GamingSaves.com: Find digital deals on Xbox, PlayStation, and Nintendo consoles.'
+      title,
+      link: [
+        {
+          rel: 'canonical',
+          href: 'https://gamingsaves.com' + this.$route.path
+        }
+      ],
+      meta: [...createMetaTagsForSocial({ url, title, description })]
     }
   }
 }

@@ -1,9 +1,9 @@
 <template>
   <div class="infinite-list-wrapper" style="overflow:auto">
     <div style="overflow:auto">
-      <ProductDisplay v-for="i in gameList" :key="i.id" :product="i">{{
-        i.title
-      }}</ProductDisplay>
+      <ProductDisplay v-for="i in gameList" :key="i.id" :product="i">
+        {{ i.title }}
+      </ProductDisplay>
     </div>
     <el-button v-if="!isDisabled" @click="load">Show More</el-button>
   </div>
@@ -11,7 +11,10 @@
 
 <script>
 import ProductDisplay from '~/components/indiv/ProductDisplay'
+import { createMetaTagsForSocial } from '~/support/meta'
+
 const API_WS = process.env.API_WS
+
 export default {
   name: 'Browser',
   components: { ProductDisplay },
@@ -68,6 +71,21 @@ export default {
       } catch (err) {
         // console.log(err.message)
       }
+    }
+  },
+  head() {
+    const url = `https://gamingsaves.com/browser`
+    const description = `Browse all deals for Xbox, PlayStation, and Switch.`
+    const title = `GamingSaves.com: Track prices and shop cross platform`
+    return {
+      title,
+      link: [
+        {
+          rel: 'canonical',
+          href: 'https://gamingsaves.com' + this.$route.path
+        }
+      ],
+      meta: [...createMetaTagsForSocial({ url, title, description })]
     }
   }
 }

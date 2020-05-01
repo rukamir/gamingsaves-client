@@ -25,6 +25,7 @@
 import SectionBanner from '~/components/SectionBanner'
 import CategoryDisplayDetailed from '~/components/CategoryDisplayDetailed'
 import CategoryDisplay from '~/components/CategoryDisplay'
+import { createMetaTagsForSocial } from '~/support/meta'
 
 export default {
   name: 'PlatformPage',
@@ -66,6 +67,22 @@ export default {
   methods: {
     gotoDealBrowser() {
       this.$router.push({ path: `/browser?platform=${this.platformTitle}` })
+    }
+  },
+  head() {
+    const { platformTitle } = this
+    const url = `https://gamingsaves.com/platform/${platformTitle}`
+    const description = `Find gaming deals for ${platformTitle}: Under $20, Under $10, Highest MetaCritic Score`
+    const title = `${platformTitle} Games on Sale`
+    return {
+      title,
+      link: [
+        {
+          rel: 'canonical',
+          href: 'https://gamingsaves.com' + this.$route.path
+        }
+      ],
+      meta: [...createMetaTagsForSocial({ url, title, description })]
     }
   }
 }
