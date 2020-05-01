@@ -42,9 +42,9 @@
           </el-image>
         </el-col>
         <el-col :sm="14" :xs="16">
-          <ProfileDetail label="Platform">{{
-            gameProfile.platform
-          }}</ProfileDetail>
+          <ProfileDetail label="Platform">
+            {{ gameProfile.platform }}
+          </ProfileDetail>
           <ProfileDetail label="Price">
             <PriceDisplay
               :list="gameProfile.list"
@@ -52,18 +52,18 @@
               :discount="gameProfile.discount"
             />
           </ProfileDetail>
-          <ProfileDetail label="Rating">
-            {{ gameProfile.rating || 'N/A' }}
-          </ProfileDetail>
+          <ProfileDetail label="Rating">{{
+            gameProfile.rating || 'N/A'
+          }}</ProfileDetail>
           <ProfileDetail label="Release Date">{{ displayDate }}</ProfileDetail>
-          <ProfileDetail label="MetaCritic Score">
-            {{ gameProfile.score || 0 }}
-          </ProfileDetail>
+          <ProfileDetail label="MetaCritic Score">{{
+            gameProfile.score || 0
+          }}</ProfileDetail>
           <ProfileDetail label="Developer">{{ gameProfile.dev }}</ProfileDetail>
           <ProfileDetail label="Publisher">{{ gameProfile.pub }}</ProfileDetail>
-          <ProfileDetail label="Genre(s)">{{
-            gameProfile.genres
-          }}</ProfileDetail>
+          <ProfileDetail label="Genre(s)">
+            {{ gameProfile.genres }}
+          </ProfileDetail>
           <el-button type="primary" round @click="visitStorePage"
             >Visit Store Page</el-button
           >
@@ -209,7 +209,7 @@ export default {
     const { id, title, platform } = this.gameProfile
     const url = `https://gamingsaves.com/game/${id}`
     const displayTitle = `Price Tracking for ${title} on ${platform}`
-    const displayDesc = `See if ${title} is currently on sale and it's lowest price.`
+    const description = `See if ${title} is currently on sale and it's lowest price.`
     return {
       title: `${title} for ${platform} price history`,
       link: [
@@ -218,7 +218,9 @@ export default {
           href: 'https://gamingsaves.com' + this.$route.path
         }
       ],
-      meta: [...createMetaTagsForSocial({ url, displayTitle, displayDesc })]
+      meta: [
+        ...createMetaTagsForSocial({ url, title: displayTitle, description })
+      ]
     }
   }
 }
