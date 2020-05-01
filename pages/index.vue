@@ -18,6 +18,10 @@
         </el-col>
       </el-row>
     </SectionBanner>
+    <SectionBanner
+      sub="view all games on sale"
+      @click.native="gotoDealBrowser"
+    ></SectionBanner>
     <el-row :gutter="5">
       <!-- eslint-disable-next-line prettier/prettier -->
       <el-col v-for="cat in topplatform" :key="cat.category" :sm="8" :xs="24">
@@ -74,6 +78,9 @@ export default {
   methods: {
     gotoConsolePage(console) {
       this.$router.push({ path: `/platform/${console}` })
+    },
+    gotoDealBrowser() {
+      this.$router.push({ path: `/browser` })
     }
   },
   head() {
