@@ -1,9 +1,9 @@
 <template>
   <div class="infinite-list-wrapper" style="overflow:auto">
     <div style="overflow:auto">
-      <ProductDisplay v-for="i in gameList" :key="i.id" :product="i">
-        {{ i.title }}
-      </ProductDisplay>
+      <ProductDisplay v-for="i in gameList" :key="i.id" :product="i">{{
+        i.title
+      }}</ProductDisplay>
     </div>
     <el-button v-if="!isDisabled" @click="load">Show More</el-button>
   </div>

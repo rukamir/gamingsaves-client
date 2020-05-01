@@ -36,12 +36,12 @@ export function createMetaTagsForSocial({ url, title, description }) {
       content: `@IncludeJimmy`
     },
     {
-      hid: 'twit',
+      hid: 'twittitle',
       name: 'twitter:title',
       content: title
     },
     {
-      hid: 'twit',
+      hid: 'twitdesc',
       name: 'twitter:description',
       content: description
     }

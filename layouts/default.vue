@@ -8,6 +8,7 @@
       </el-col>
       <el-col :lg="3" :sm="24" :xs="24">AD AD AD</el-col>
     </el-row>
+    <Footer />
   </div>
 </template>
 
@@ -63,9 +64,10 @@ html {
 
 <script>
 import DealHeader from '~/components/DealHeader'
+import Footer from '~/components/Footer'
 
 export default {
   name: 'Default',
-  components: { DealHeader }
+  components: { DealHeader, Footer }
 }
 </script>
