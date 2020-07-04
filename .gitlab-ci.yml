@@ -25,10 +25,10 @@ deploy-prod:
     - chmod 600 $SSH_KEY
     - mkdir -p ~/.ssh
     - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
-    - ssh -i $SSH_KEY jimmy@$PROD_ADDR rm -f /home/jimmy/gamingsaves-fe.docker
-    - ssh -i $SSH_KEY jimmy@$PROD_ADDR /home/jimmy/scripts/fe-stop.sh
   script:
+    - ssh -i $SSH_KEY jimmy@$PROD_ADDR rm -f /home/jimmy/gamingsaves-fe.docker
     - scp -i $SSH_KEY $CI_PROJECT_DIR/gamingsaves-fe.docker  jimmy@$PROD_ADDR:/home/jimmy/gamingsaves-fe.docker
+    - ssh -i $SSH_KEY jimmy@$PROD_ADDR /home/jimmy/scripts/fe-stop.sh
     - ssh -i $SSH_KEY jimmy@$PROD_ADDR docker load -i /home/jimmy/gamingsaves-fe.docker
     - ssh -i $SSH_KEY jimmy@$PROD_ADDR /home/jimmy/scripts/fe-start.sh
   only:
