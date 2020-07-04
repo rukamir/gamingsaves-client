@@ -153,25 +153,26 @@ export default {
   name: 'GameProfilePage',
   components: { PriceChart, CategoryDisplay, ProfileDetail, PriceDisplay },
   props: {},
-  asyncData: async ({ $axios, params }) => {
-    const { API_WS } = process.env
+  async asyncData({ $axios, params }) {
+    const API_WS = process.env.API_WS
     let gameProfile = null
     // let genreSuggestions = null
     let platformSuggestions = null
     let popularPlatform = null
     try {
-      gameProfile = await $axios.$get(API_WS + '/v1/game/' + params.game)
+      gameProfile = await $axios.$get(API_WS + '/v1/en/US/game/' + params.game)
       // genreSuggestions = await $axios.$get(
       //   'http://localhost:2000/top/genre/multi?value=' + gameProfile.genres[0]
       // )
       platformSuggestions = await $axios.$get(
-        API_WS + '/top/platform?value=' + gameProfile.platform
+        API_WS + '/v1/en/US/top/platform?value=' + gameProfile.platform
       )
       popularPlatform = await $axios.$get(
-        API_WS + '/v1/popular?platform=' + gameProfile.platform
+        API_WS + '/v1/en/US/popular?platform=' + gameProfile.platform
       )
     } catch (err) {
       // genreSuggestions = null
+      // console.log('err', err.message)
     }
     return { gameProfile, platformSuggestions, popularPlatform }
   },
@@ -189,16 +190,16 @@ export default {
       return 0
     },
     getImgURL() {
-      return `${this.IMG_SRC}/${this.gameProfile.src}/${this.gameProfile.id}`
+      return `${this.IMG_SRC}/gamingsaves/${this.gameProfile.src}/en/US/${this.gameProfile.id}`
     },
     displayDate() {
       return moment(this.gameProfile.release).format('L')
     }
   },
   created() {
-    this.gameProfile.history.forEach((e) => {
-      if (e.list < this.low.list) this.low = e
-    })
+    // this.gameProfile.history.forEach((e) => {
+    //   if (e.list < this.low.list) this.low = e
+    // })
   },
   methods: {
     visitStorePage() {

@@ -40,17 +40,19 @@ export default {
 
     try {
       popularList = await $axios.$get(
-        API_WS + '/v1/popular?platform=' + params.platform
+        API_WS + '/v1/en/US/popular?platform=' + params.platform
       )
       recentList = await $axios.$get(
-        API_WS + '/v1/recent?platform=' + params.platform
+        API_WS + '/v1/en/US/recent?platform=' + params.platform
       )
-      highscoreList = await $axios.$get(API_WS + '/v1/top/' + params.platform)
+      highscoreList = await $axios.$get(
+        API_WS + '/v1/en/US/top/' + params.platform
+      )
       undertwentyList = await $axios.$get(
-        API_WS + '/v1/top/' + params.platform + '?under=20'
+        API_WS + '/v1/en/US/top/' + params.platform + '?under=20'
       )
       undertenList = await $axios.$get(
-        API_WS + '/v1/top/' + params.platform + '?under=10'
+        API_WS + '/v1/en/US/top/' + params.platform + '?under=10'
       )
     } catch (err) {
       // something
@@ -71,7 +73,7 @@ export default {
   },
   head() {
     const { platformTitle } = this
-    const url = `https://gamingsaves.com/platform/${platformTitle}`
+    const url = `https://gamingsaves.com/en-US/platform/${platformTitle}`
     const description = `Find gaming deals for ${platformTitle}: Under $20, Under $10, Highest MetaCritic Score`
     const title = `${platformTitle} Games on Sale`
     return {

@@ -60,9 +60,13 @@ export default {
     let genreLists = null
     let platformsAvailable = null
     try {
-      platformLists = await $axios.$get(API_WS + '/top/platform/modern')
-      genreLists = await $axios.$get(API_WS + '/top/genre/picks')
-      platformsAvailable = await $axios.$get(API_WS + '/v1/platform/available')
+      platformLists = await $axios.$get(
+        API_WS + '/v1/en/US/top/platform/modern'
+      )
+      genreLists = await $axios.$get(API_WS + '/v1/en/US/top/genre/picks')
+      platformsAvailable = await $axios.$get(
+        API_WS + '/v1/en/US/available/platform'
+      )
     } catch (err) {
       // eslint-disable-next-line no-console
       console.log('Error:', err.message)

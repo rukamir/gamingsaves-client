@@ -72,7 +72,8 @@ export default {
     extend(config, ctx) {}
   },
   router: {
-    prefetchLinks: false
+    prefetchLinks: false,
+    middleware: ['region-redirect']
   },
   env: {
     IMG_SRC: process.env.IMG_SRC || 'http://localhost:80/img',

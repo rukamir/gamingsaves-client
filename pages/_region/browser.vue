@@ -23,7 +23,7 @@ export default {
     const offset = 1
     const limit = 40
     try {
-      gameList = await $axios.$get(API_WS + '/v1/deals', {
+      gameList = await $axios.$get(API_WS + '/v1/en/US/deals', {
         params: {
           platform: query.platform,
           offset,
@@ -56,7 +56,7 @@ export default {
     async getMoreDeals() {
       let moreItems = null
       try {
-        moreItems = await this.$axios.$get(API_WS + '/v1/deals', {
+        moreItems = await this.$axios.$get(API_WS + '/v1/en/US/deals', {
           params: {
             platform: this.platform,
             limit: this.limit,

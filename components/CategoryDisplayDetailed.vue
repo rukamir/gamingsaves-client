@@ -116,7 +116,7 @@ export default {
       this.$router.push({ path: `/game/${id}` })
     },
     getImgURL(entry) {
-      return `${this.IMG_SRC}/${entry.src}/${entry.id}`
+      return `${this.IMG_SRC}/gamingsaves/${entry.src}/en/US/${entry.id}`
     }
   }
 }
