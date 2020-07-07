@@ -5,7 +5,9 @@
         <nuxt-link to="/about">About</nuxt-link>
       </el-col>
       <el-col>
-        <nuxt-link to="https://jimmyroland.com">Created by Jimmy R</nuxt-link>
+        <a target="”_blank”" href="https://jimmyroland.com"
+          >Created by Jimmy R</a
+        >
       </el-col>
     </el-row>
     <div></div>
